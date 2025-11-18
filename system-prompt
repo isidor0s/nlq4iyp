@@ -1,0 +1,2116 @@
+
+Schema: This is the schema representation of Neo4j database.
+
+1. Node Types:
+        - Name:
+                - name
+        - Country:
+                - name
+                - country_code
+                - alpha3
+        - Tag:
+                - label
+        - AuthoritativeNameServer:
+                - name
+        - Ranking:
+                - name
+        - Prefix:
+                - prefixlen
+                - af
+                - network
+                - prefix
+        - BGPCollector:
+                - name
+                - project
+        - OpaqueID:
+                - id
+        - Organization:
+                - name
+        - URL:
+                - url
+        - PeeringdbOrgID:
+                - id
+        - Facility:
+                - name
+        - PeeringdbFacID:
+                - id
+        - PeeringdbIXID:
+                - id
+        - IXP:
+                - name
+        - PeeringdbNetID:
+                - id
+        - CaidaIXID:
+                - id
+        - DomainName:
+                - name
+        - HostName:
+                - name
+        - IP:
+                - ip
+                - af
+        - AtlasProbe:
+                - country_code
+                - asn_v6
+                - type
+                - prefix_v6
+                - first_connected
+                - prefix_v4
+                - asn_v4
+                - address_v4
+                - geometry_coordinates_1
+                - description
+                - status_id
+                - status_name
+                - id
+                - is_anchor
+                - geometry_coordinates_0
+                - address_v6
+                - is_public
+        - AtlasMeasurement:
+                - type
+                - query_type
+                - target_prefix
+                - protocol
+                - result
+                - probes_requested
+                - start_time
+                - target_ip
+                - target_hostname
+                - creation_time
+                - af
+                - participant_count
+                - interval
+                - resolve_on_probe
+                - is_oneoff
+                - target_asn
+                - use_probe_resolver
+                - query_string
+                - description
+                - stop_time
+                - status_id
+                - status_name
+                - query_class
+                - id
+                - probes_scheduled
+                - method
+                - is_public
+                - query_argument
+        - Estimate:
+                - name
+        - AS:
+                - asn
+
+2. Relationship Types:
+        - NAME:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - COUNTRY:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - registry
+        - CATEGORIZED:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - layer
+                - moas
+        - RANK:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - cc
+                - rank
+                - cumulative
+                - percent
+                - country
+                - hege
+                - af
+                - longitude
+                - latitude
+        - POPULATION:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - cc
+                - rank
+                - cumulative
+                - percent
+                - samples
+                - value
+        - ORIGINATE:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - count
+                - af
+        - PEERS_WITH:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - af
+                - rel
+        - RESERVED:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - registry
+        - ASSIGNED:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - registry
+        - AVAILABLE:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - registry
+        - ROUTE_ORIGIN_AUTHORIZATION:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - notAfter
+                - maxLength
+                - notBefore
+        - DEPENDS_ON:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - af
+                - hege
+        - PART_OF:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - WEBSITE:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - EXTERNAL_ID:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - MANAGED_BY:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - LOCATED_IN:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - MEMBER_OF:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - RESOLVES_TO:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - glue
+                - ttl
+        - SIBLING_OF:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - TARGET:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - PARENT:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - ALIAS_OF:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+        - QUERIED_FROM:
+                - reference_name
+                - reference_org
+                - reference_time_fetch
+                - reference_url_data
+                - reference_time_modification
+                - reference_url_info
+                - value
+
+3. Schema:
+        - (AtlasMeasurement)-[:TARGET]-(AuthoritativeNameServer)
+        - (AtlasMeasurement)-[:TARGET]-(AS)
+        - (AtlasMeasurement)-[:TARGET]-(IP)
+        - (AtlasMeasurement)-[:TARGET]-(HostName)
+        - (Country)-[:POPULATION]-(Estimate)
+        - (AS)-[:POPULATION]-(Country)
+        - (AtlasProbe)-[:LOCATED_IN]-(AS)
+        - (IXP)-[:LOCATED_IN]-(Facility)
+        - (AS)-[:LOCATED_IN]-(Facility)
+        - (AS)-[:MEMBER_OF]-(IXP)
+        - (Prefix)-[:DEPENDS_ON]-(AS)
+        - (AS)-[:DEPENDS_ON]-(AS)
+        - (AuthoritativeNameServer)-[:RANK]-(Ranking)
+        - (HostName)-[:RANK]-(Ranking)
+        - (DomainName)-[:RANK]-(Ranking)
+        - (AS)-[:RANK]-(Ranking)
+        - (AS)-[:RESERVED]-(OpaqueID)
+        - (Prefix)-[:RESERVED]-(OpaqueID)
+        - (Prefix)-[:PART_OF]-(Prefix)
+        - (IP)-[:PART_OF]-(Prefix)
+        - (URL)-[:PART_OF]-(AuthoritativeNameServer)
+        - (URL)-[:PART_OF]-(HostName)
+        - (Tag)-[:PART_OF]-(Tag)
+        - (AtlasProbe)-[:PART_OF]-(AtlasMeasurement)
+        - (AuthoritativeNameServer)-[:PART_OF]-(DomainName)
+        - (HostName)-[:PART_OF]-(DomainName)
+        - (IXP)-[:MANAGED_BY]-(Organization)
+        - (AS)-[:MANAGED_BY]-(Organization)
+        - (DomainName)-[:MANAGED_BY]-(AuthoritativeNameServer)
+        - (DomainName)-[:MANAGED_BY]-(HostName)
+        - (Facility)-[:MANAGED_BY]-(Organization)
+        - (Prefix)-[:MANAGED_BY]-(IXP)
+        - (Organization)-[:SIBLING_OF]-(Organization)
+        - (AS)-[:SIBLING_OF]-(AS)
+        - (AS)-[:PEERS_WITH]-(BGPCollector)
+        - (AS)-[:PEERS_WITH]-(AS)
+        - (Organization)-[:NAME]-(Name)
+        - (Facility)-[:NAME]-(Name)
+        - (AS)-[:NAME]-(Name)
+        - (IXP)-[:NAME]-(Name)
+        - (Prefix)-[:AVAILABLE]-(OpaqueID)
+        - (AS)-[:AVAILABLE]-(OpaqueID)
+        - (AS)-[:COUNTRY]-(Country)
+        - (Facility)-[:COUNTRY]-(Country)
+        - (Prefix)-[:COUNTRY]-(Country)
+        - (IXP)-[:COUNTRY]-(Country)
+        - (AtlasProbe)-[:COUNTRY]-(Country)
+        - (Ranking)-[:COUNTRY]-(Country)
+        - (Organization)-[:COUNTRY]-(Country)
+        - (AuthoritativeNameServer)-[:RESOLVES_TO]-(IP)
+        - (HostName)-[:RESOLVES_TO]-(IP)
+        - (HostName)-[:ALIAS_OF]-(AuthoritativeNameServer)
+        - (HostName)-[:ALIAS_OF]-(HostName)
+        - (AuthoritativeNameServer)-[:ALIAS_OF]-(AuthoritativeNameServer)
+        - (AuthoritativeNameServer)-[:ALIAS_OF]-(HostName)
+        - (AS)-[:ROUTE_ORIGIN_AUTHORIZATION]-(Prefix)
+        - (Facility)-[:EXTERNAL_ID]-(PeeringdbFacID)
+        - (AS)-[:EXTERNAL_ID]-(PeeringdbNetID)
+        - (Organization)-[:EXTERNAL_ID]-(PeeringdbOrgID)
+        - (IXP)-[:EXTERNAL_ID]-(CaidaIXID)
+        - (IXP)-[:EXTERNAL_ID]-(PeeringdbIXID)
+        - (DomainName)-[:QUERIED_FROM]-(AS)
+        - (DomainName)-[:QUERIED_FROM]-(Country)
+        - (Prefix)-[:ASSIGNED]-(OpaqueID)
+        - (AS)-[:ASSIGNED]-(OpaqueID)
+        - (IP)-[:ASSIGNED]-(AtlasProbe)
+        - (DomainName)-[:PARENT]-(DomainName)
+        - (AS)-[:ORIGINATE]-(Prefix)
+        - (URL)-[:CATEGORIZED]-(Tag)
+        - (Prefix)-[:CATEGORIZED]-(Tag)
+        - (AS)-[:CATEGORIZED]-(Tag)
+        - (IXP)-[:WEBSITE]-(URL)
+        - (Organization)-[:WEBSITE]-(URL)
+        - (AS)-[:WEBSITE]-(URL)
+        - (Facility)-[:WEBSITE]-(URL)
+
+Make sure to respect relationship types and directions.
+
+Examples: The following Cypher examples demonstrate how we can use the given schema.
+
+Example 1
+Prompt:
+Find the IXPs' names where the AS with asn 2497 is present.
+
+Cypher query:
+```
+MATCH (:AS {asn: 2497})-[:MEMBER_OF]->(ixp:IXP)
+RETURN DISTINCT ixp.name
+```
+
+Example 2
+Prompt:
+Give me the names of the IXPs where AS2497 is member.
+
+Cypher query:
+```
+MATCH (:AS {asn: 2497})-[:MEMBER_OF]->(ixp:IXP)
+RETURN DISTINCT ixp.name
+```
+
+Example 3
+Prompt:
+Find the percentage of the population of the Country with country_code "JP"   hosted by the AS with asn 2497.
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[p:POPULATION]-(:Country {country_code:'JP'})
+RETURN p.percent
+```
+
+Example 4
+Prompt:
+Find the percentage of Japan's population in AS2497.
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[p:POPULATION]-(:Country {country_code:'JP'})
+RETURN p.percent
+```
+
+Example 5
+Prompt:
+For AS with asn 2497 find all rank values and their corresponding Ranking name for Rankings corresponding to Country with country_code "JP".
+
+Cypher query:
+```
+MATCH (:AS  {asn:2497})-[r1:RANK]-(r2:Ranking)--(:Country {country_code:'JP'})
+RETURN r1.rank, r2.name
+```
+
+Example 6
+Prompt:
+Find the rank and the corresponding rankings name for AS2497 in Japan.
+
+Cypher query:
+```
+MATCH (:AS  {asn:2497})-[r1:RANK]-(r2:Ranking)--(:Country {country_code:'JP'})
+RETURN r1.rank, r2.name
+```
+
+Example 7
+Prompt:
+Find all the AS nodes that have peer to peer relationship with the AS with asn 2497.
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[:PEERS_WITH {rel: 0}]-(a:AS)
+RETURN a
+```
+
+Example 8
+Prompt:
+Which Ases have a settlement-free peering with AS2497?
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[:PEERS_WITH {rel: 0}]-(a:AS)
+RETURN a
+```
+
+Example 9
+Prompt:
+Find all distinct names for the AS with asn 2497.
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[:NAME]-(n:Name)
+RETURN DISTINCT n.name
+```
+
+Example 10
+Prompt:
+What are the names of AS2497?
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[:NAME]-(n:Name)
+RETURN DISTINCT n.name
+```
+
+Example 11
+Prompt:
+Find the label of all the tags' corresponding to the AS with asn 2497.
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[:CATEGORIZED]-(t:Tag)
+RETURN DISTINCT t.label
+```
+
+Example 12
+Prompt:
+What are the tags for AS2497?
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[:CATEGORIZED]-(t:Tag)
+RETURN DISTINCT t.label
+```
+
+Example 13
+Prompt:
+Find the label of all the tags for the Prefix with prefix 43.249.213.0/24.
+
+Cypher query:
+```
+MATCH (:Prefix {prefix: '43.249.213.0/24'})-[:CATEGORIZED]-(t:Tag)
+RETURN DISTINCT t.label
+```
+
+Example 14
+Prompt:
+What are the tags for 43.249.213.0/24?
+
+Cypher query:
+```
+MATCH (:Prefix {prefix: '43.249.213.0/24'})-[:CATEGORIZED]-(t:Tag)
+RETURN DISTINCT t.label
+```
+
+Example 15
+Prompt:
+Find the rank value for AS with asn 2497 in the Ranking with name "CAIDA ASRank".
+
+Cypher query:
+```
+MATCH (:AS  {asn:2497})-[r:RANK]-(:Ranking {name:'CAIDA ASRank'})
+RETURN r.rank
+```
+
+Example 16
+Prompt:
+What is the rank for AS2497 in CAIDA ASRank?
+
+Cypher query:
+```
+MATCH (:AS  {asn:2497})-[r:RANK]-(:Ranking {name:'CAIDA ASRank'})
+RETURN r.rank
+```
+
+Example 17
+Prompt:
+Find the rank value for DomainName with name "google.com" in the Ranking with name "Cisco Umbrella Top 1 million".
+
+Cypher query:
+```
+MATCH (:DomainName {name: 'google.com'})-[r:RANK]-(:Ranking {name:'Cisco Umbrella Top 1 million'})
+RETURN r.rank
+```
+
+Example 18
+Prompt:
+What is the rank for google.com in Cisco Umbrella Top 1 million?
+
+Cypher query:
+```
+MATCH (:DomainName {name: 'google.com'})-[r:RANK]-(:Ranking {name:'Cisco Umbrella Top 1 million'})
+RETURN r.rank
+```
+
+Example 19
+Prompt:
+Find the rank value for HostName with name "www.google.com" in the Ranking with name "Cisco Umbrella Top 1 million".
+
+Cypher query:
+```
+MATCH (:HostName {name: 'www.google.com'})-[r:RANK]-(:Ranking {name:'Cisco Umbrella Top 1 million'})
+RETURN r.rank
+```
+
+Example 20
+Prompt:
+What is the rank for www.google.com in Cisco Umbrella Top 1 million?
+
+Cypher query:
+```
+MATCH (:HostName {name: 'www.google.com'})-[r:RANK]-(:Ranking {name:'Cisco Umbrella Top 1 million'})
+RETURN r.rank
+```
+
+Example 21
+Prompt:
+Find distinct labels for the tags corresponding to the URL with url "https://www.flipkart.com/".
+
+Cypher query:
+```
+MATCH (:URL {url: "https://www.flipkart.com/"})-[:CATEGORIZED]->(t:Tag)
+RETURN DISTINCT t.label
+```
+
+Example 22
+Prompt:
+What are the tags for https://www.flipkart.com/?
+
+Cypher query:
+```
+MATCH (:URL {url: "https://www.flipkart.com/"})-[:CATEGORIZED]->(t:Tag)
+RETURN DISTINCT t.label
+```
+
+Example 23
+Prompt:
+Find the QUERIED_FROM's value for the DomainName with name "google.com" and the Country with country_code "US".
+
+Cypher query:
+```
+MATCH (:DomainName {name: 'google.com'})-[q:QUERIED_FROM]->(:Country {country_code: 'US'})
+RETURN q.value
+```
+
+Example 24
+Prompt:
+What is the proportion of queries for google.com from the US?
+
+Cypher query:
+```
+MATCH (:DomainName {name: 'google.com'})-[q:QUERIED_FROM]->(:Country {country_code: 'US'})
+RETURN q.value
+```
+
+Example 25
+Prompt:
+Find the QUERIED_FROM's value for the DomainName with name "google.com" from the AS with asn 577.
+
+Cypher query:
+```
+MATCH (:DomainName {name: 'google.com'})-[q:QUERIED_FROM]->(a:AS {asn: 577})
+RETURN q.value
+```
+
+Example 26
+Prompt:
+What is the proportion of queries for google.com from AS577?
+
+Cypher query:
+```
+MATCH (:DomainName {name: 'google.com'})-[q:QUERIED_FROM]->(a:AS {asn: 577})
+RETURN q.value
+```
+
+Example 27
+Prompt:
+Find the distinct asn for ASes corresponding to the Name with name "IIJ".
+
+Cypher query:
+```
+MATCH (a:AS)-[:NAME]-(:Name {name: 'IIJ'})
+RETURN DISTINCT a.asn
+```
+
+Example 28
+Prompt:
+What is IIJ's ASN?
+
+Cypher query:
+```
+MATCH (a:AS)-[:NAME]-(:Name {name: 'IIJ'})
+RETURN DISTINCT a.asn
+```
+
+Example 29
+Prompt:
+Find the distinct name of AuthoritativeNameServer that manage the DomainName with name "jp".
+
+Cypher query:
+```
+MATCH (:DomainName {name: 'jp'})-[:MANAGED_BY]->(a:AuthoritativeNameServer)
+RETURN DISTINCT a.name
+```
+
+Example 30
+Prompt:
+What are the authoritative nameservers for the .jp domain?
+
+Cypher query:
+```
+MATCH (:DomainName {name: 'jp'})-[:MANAGED_BY]->(a:AuthoritativeNameServer)
+RETURN DISTINCT a.name
+```
+
+Example 31
+Prompt:
+Find the name of the AuthoritativeNameServer that resolves to the IP with ip 203.119.1.1.
+
+Cypher query:
+```
+MATCH (a:AuthoritativeNameServer)-[:RESOLVES_TO]->(:IP {ip: '203.119.1.1'})
+RETURN DISTINCT a.name
+```
+
+Example 32
+Prompt:
+Which authoritative name server has the IP address 203.119.1.1?
+
+Cypher query:
+```
+MATCH (a:AuthoritativeNameServer)-[:RESOLVES_TO]->(:IP {ip: '203.119.1.1'})
+RETURN DISTINCT a.name
+```
+
+Example 33
+Prompt:
+AS with asn 2907 depends on AS with asn 2497, find the hege values between them.
+
+Cypher query:
+```
+MATCH (:AS {asn: 2907})-[d:DEPENDS_ON]-(:AS {asn: 2497})
+RETURN d.hege
+```
+
+Example 34
+Prompt:
+What is the AS hegemony value between AS2907 and AS2497.
+
+Cypher query:
+```
+MATCH (:AS {asn: 2907})-[d:DEPENDS_ON]-(:AS {asn: 2497})
+RETURN d.hege
+```
+
+Example 35
+Prompt:
+Find the asn of the AS which has rank 1 for Japan (Country with country_code "JP") according to the Ranking with name "IHR country ranking: Total AS (JP)".
+
+Cypher query:
+```
+MATCH (a:AS)-[r:RANK]->(:Ranking {name: 'IHR country ranking: Total AS (JP)'})-[:COUNTRY]->(:Country {country_code: 'JP'})
+RETURN a.asn
+ORDER BY r.hege DESC
+LIMIT 1
+```
+
+Example 36
+Prompt:
+Which AS ranks the highest for Japan in terms of ASes?
+
+Cypher query:
+```
+MATCH (a:AS)-[r:RANK]->(:Ranking {name: 'IHR country ranking: Total AS (JP)'})-[:COUNTRY]->(:Country {country_code: 'JP'})
+RETURN a.asn
+ORDER BY r.hege DESC
+LIMIT 1
+```
+
+Example 37
+Prompt:
+Find the prefix of Prefix nodes that originate from AS with asn 2497.
+
+Cypher query:
+```
+MATCH (p:Prefix)<-[:ORIGINATE]-(:AS {asn: 2497})
+RETURN p.prefix
+```
+
+Example 38
+Prompt:
+Which prefixes AS2497 is orginating in BGP?
+
+Cypher query:
+```
+MATCH (p:Prefix)<-[:ORIGINATE]-(:AS {asn: 2497})
+RETURN p.prefix
+```
+
+Example 39
+Prompt:
+Find the distinct prefix of Prefix nodes that depends on the AS with asn 2497.
+
+Cypher query:
+```
+MATCH (p:Prefix)-[:DEPENDS_ON]->(:AS {asn: 2497})
+RETURN DISTINCT p.prefix
+```
+
+Example 40
+Prompt:
+Which prefixes are depending on AS2497?
+
+Cypher query:
+```
+MATCH (p:Prefix)-[:DEPENDS_ON]->(:AS {asn: 2497})
+RETURN DISTINCT p.prefix
+```
+
+Example 41
+Prompt:
+Find the distinct prefix of Prefix nodes that are categorized with Tag with label "RPKI Valid".
+
+Cypher query:
+```
+MATCH (p:Prefix)-[:CATEGORIZED]->(:Tag {label: 'RPKI Valid'})
+RETURN DISTINCT p.prefix
+```
+
+Example 42
+Prompt:
+Find all RPKI valid prefixes?
+
+Cypher query:
+```
+MATCH (p:Prefix)-[:CATEGORIZED]->(:Tag {label: 'RPKI Valid'})
+RETURN DISTINCT p.prefix
+```
+
+Example 43
+Prompt:
+Find the distinct prefix of Prefix related to Country with country_code "JP".
+
+Cypher query:
+```
+MATCH (p:Prefix)-[:COUNTRY]->(:Country {country_code: 'JP'})
+RETURN DISTINCT p.prefix
+```
+
+Example 44
+Prompt:
+Give me all prefixes in Japan.
+
+Cypher query:
+```
+MATCH (p:Prefix)-[:COUNTRY]->(:Country {country_code: 'JP'})
+RETURN DISTINCT p.prefix
+```
+
+Example 45
+Prompt:
+Find all AS sibling of the AS with asn 2497. Return only the asn.
+
+Cypher query:
+```
+MATCH (:AS {asn: 2497})-[:SIBLING_OF]->(a:AS)
+RETURN a.asn
+```
+
+Example 46
+Prompt:
+Find AS2497's sibling ASNs.
+
+Cypher query:
+```
+MATCH (:AS {asn: 2497})-[:SIBLING_OF]->(a:AS)
+RETURN a.asn
+```
+
+Example 47
+Prompt:
+Find the distinct ip of IP nodes for which HostName with name "google.com" resolves to.
+
+Cypher query:
+```
+MATCH (:HostName {name: 'google.com'})-[:RESOLVES_TO]->(i:IP)
+RETURN DISTINCT i.ip
+```
+
+Example 48
+Prompt:
+What are the IP addresses for google.com?
+
+Cypher query:
+```
+MATCH (:HostName {name: 'google.com'})-[:RESOLVES_TO]->(i:IP)
+RETURN DISTINCT i.ip
+```
+
+Example 49
+Prompt:
+Find the asn of the AS which is the target of the AtlasMeasurement with id 17635549.
+
+Cypher query:
+```
+MATCH (:AtlasMeasurement {id: 17635549})-[:TARGET]->(a:AS)
+RETURN a.asn
+```
+
+Example 50
+Prompt:
+What is the ASN targeted by Atlas measurement 17635549?
+
+Cypher query:
+```
+MATCH (:AtlasMeasurement {id: 17635549})-[:TARGET]->(a:AS)
+RETURN a.asn
+```
+
+Example 51
+Prompt:
+Find the name of the HostName node which is the target of the AtlasMeasurement with id 17635549.
+
+Cypher query:
+```
+MATCH (:AtlasMeasurement {id: 17635549})-[:TARGET]->(h:HostName)
+RETURN h.name
+```
+
+Example 52
+Prompt:
+What is the target hostname for Atlas measurement 17635549?
+
+Cypher query:
+```
+MATCH (:AtlasMeasurement {id: 17635549})-[:TARGET]->(h:HostName)
+RETURN h.name
+```
+
+Example 53
+Prompt:
+Find the ip of the IP node which is the target of AtlasMeasurement with id 17635549.
+
+Cypher query:
+```
+MATCH (:AtlasMeasurement {id: 17635549})-[:TARGET]->(i:IP)
+RETURN i.ip
+```
+
+Example 54
+Prompt:
+What is the target IP address for Atlas measurement 17635549?
+
+Cypher query:
+```
+MATCH (:AtlasMeasurement {id: 17635549})-[:TARGET]->(i:IP)
+RETURN i.ip
+```
+
+Example 55
+Prompt:
+Find the id of the OpaqueID corresponding to Prefix with prefix 102.209.224.0/21. Return only the OpaqueID's id.
+
+Cypher query:
+```
+MATCH (:Prefix {prefix: '102.209.224.0/21'})-[:AVAILABLE]->(o:OpaqueID)
+RETURN o.id
+```
+
+Example 56
+Prompt:
+What is the opaque id for 102.209.224.0/21?
+
+Cypher query:
+```
+MATCH (:Prefix {prefix: '102.209.224.0/21'})-[:AVAILABLE]->(o:OpaqueID)
+RETURN o.id
+```
+
+Example 57
+Prompt:
+Find all the distinct Tag's labels that categorize the AS with asn 2497.
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[:CATEGORIZED]-(t:Tag)
+RETURN DISTINCT t.label
+```
+
+Example 58
+Prompt:
+Find all tags for AS2497.
+
+Cypher query:
+```
+MATCH (:AS {asn:2497})-[:CATEGORIZED]-(t:Tag)
+RETURN DISTINCT t.label
+```
+
+Example 59
+Prompt:
+From the Ranking with name "Tranco top 1M" find the name of the DomainName that is ranked first.
+
+Cypher query:
+```
+MATCH (d:DomainName)-[:RANK {rank: 1}]->(:Ranking {name: 'Tranco top 1M'})
+RETURN d.name
+```
+
+Example 60
+Prompt:
+What is the first domain name in "Tranco top 1M"?
+
+Cypher query:
+```
+MATCH (d:DomainName)-[:RANK {rank: 1}]->(:Ranking {name: 'Tranco top 1M'})
+RETURN d.name
+```
+
+Example 61
+Prompt:
+Find population Estimate value for Country Japan with country_code "JP".
+
+Cypher query:
+```
+MATCH (:Country {country_code: "JP"})-[p:POPULATION]-(:Estimate)
+RETURN p.value
+```
+
+Example 62
+Prompt:
+What is Japan's estimated population?
+
+Cypher query:
+```
+MATCH (:Country {country_code: "JP"})-[p:POPULATION]-(:Estimate)
+RETURN p.value
+```
+
+Example 63
+Prompt:
+Find the number of AS in Country with country_code "CN" and "HK".
+
+Cypher query:
+```
+MATCH (a:AS)-[:COUNTRY]-(cc:Country)
+WHERE cc.country_code = 'CN' OR cc.country_code = 'HK'
+WITH cc.country_code AS code, count(DISTINCT a) AS c
+RETURN c
+```
+
+Example 64
+Prompt:
+What is the number of ASes registered in China and Hong Kong?
+
+Cypher query:
+```
+MATCH (a:AS)-[:COUNTRY]-(cc:Country)
+WHERE cc.country_code = 'CN' OR cc.country_code = 'HK'
+WITH cc.country_code AS code, count(DISTINCT a) AS c
+RETURN c
+```
+
+Example 65
+Prompt:
+Find the total number of  AS in Country with country_code "CN" that also orignate Prefixes.
+
+Cypher query:
+```
+MATCH (:Country {country_code: "CN"})-[:COUNTRY]-(as:AS)-[:ORIGINATE]-(:Prefix)
+RETURN count(DISTINCT as) AS totalASWithPrefix
+```
+
+Example 66
+Prompt:
+What is the number of Chinese ASes that originate prefixes in BGP?
+
+Cypher query:
+```
+MATCH (:Country {country_code: "CN"})-[:COUNTRY]-(as:AS)-[:ORIGINATE]-(:Prefix)
+RETURN count(DISTINCT as) AS totalASWithPrefix
+```
+
+Example 67
+Prompt:
+Find all Facilities where AS with asn 4134 and AS with asn 23764 are located in.
+
+Cypher query:
+```
+MATCH (a:AS)-[:LOCATED_IN]-(fac:Facility)-[:LOCATED_IN]-(b:AS)
+WHERE a.asn = 4134 AND b.asn = 23764
+RETURN fac
+```
+
+Example 68
+Prompt:
+Find the common facilities between AS4134 and AS23764.
+
+Cypher query:
+```
+MATCH (a:AS)-[:LOCATED_IN]-(fac:Facility)-[:LOCATED_IN]-(b:AS)
+WHERE a.asn = 4134 AND b.asn = 23764
+RETURN fac
+```
+
+Example 69
+Prompt:
+Find the distinct country_code of Country where for Facilities where both AS with asn 4134 and AS with asn 23764 are located.
+
+Cypher query:
+```
+MATCH (a:AS)-[:LOCATED_IN]-(fac:Facility)-[:LOCATED_IN]-(b:AS)
+WHERE a.asn = 4134 AND b.asn = 23764 MATCH (fac)-[:COUNTRY]-(c:Country)
+RETURN DISTINCT c.country_code
+```
+
+Example 70
+Prompt:
+Find the country codes for all the common facilities between AS4134 and AS23764.
+
+Cypher query:
+```
+MATCH (a:AS)-[:LOCATED_IN]-(fac:Facility)-[:LOCATED_IN]-(b:AS)
+WHERE a.asn = 4134 AND b.asn = 23764 MATCH (fac)-[:COUNTRY]-(c:Country)
+RETURN DISTINCT c.country_code
+```
+
+Example 71
+Prompt:
+Find all ASes corresponding to the OpaqueID of AS with asn 4134 and AS with asn 23764. Then find the Country for facilities where all these ASes are. Return the distinct country_code and the corresponding list of ASes.
+
+Cypher query:
+```
+MATCH (a:AS)-[:ASSIGNED]-(oid:OpaqueID)
+WHERE a.asn IN [4134, 23764]
+WITH oid
+MATCH (oid)--(other:AS)--(fac:Facility)--(cc:Country)
+RETURN DISTINCT cc.country_code, collect(DISTINCT other.asn)
+```
+
+Example 72
+Prompt:
+Find the country codes of facilities where for all ASes that correspond to the OpaqueID's of AS4134 and AS23764. Return the distinct country_code and the corresponding list of ASes.
+
+Cypher query:
+```
+MATCH (a:AS)-[:ASSIGNED]-(oid:OpaqueID)
+WHERE a.asn IN [4134, 23764]
+WITH oid
+MATCH (oid)--(other:AS)--(fac:Facility)--(cc:Country)
+RETURN DISTINCT cc.country_code, collect(DISTINCT other.asn)
+```
+
+Example 73
+Prompt:
+Find all nodes that have relationships to the Prefix with prefix 8.8.8.0/24. Do not take into account the direction of the relationships.
+
+Cypher query:
+```
+MATCH (gdns:Prefix {prefix:'8.8.8.0/24'})--(neighbor)
+RETURN neighbor
+```
+
+Example 74
+Prompt:
+Return everything that is related with 8.8.8.0/24.
+
+Cypher query:
+```
+MATCH (gdns:Prefix {prefix:'8.8.8.0/24'})--(neighbor)
+RETURN neighbor
+```
+
+Example 75
+Prompt:
+Find the Country connected (reference_name "nro.delegated_stats") with AS with asn 2497.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[{reference_name:'nro.delegated_stats'}]-(cc:Country)
+RETURN cc
+```
+
+Example 76
+Prompt:
+In which country is AS2497 registered in the delegated stats?
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[{reference_name:'nro.delegated_stats'}]-(cc:Country)
+RETURN cc
+```
+
+Example 77
+Prompt:
+Find the IXP where AS with asn 2497 is member of and then the Country corresponding to these IXP.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[:MEMBER_OF]-(ix:IXP)--(cc:Country)
+RETURN ix, cc
+```
+
+Example 78
+Prompt:
+Which IXPs and corresponding countries is AS2497 member of?
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[:MEMBER_OF]-(ix:IXP)--(cc:Country)
+RETURN ix, cc
+```
+
+Example 79
+Prompt:
+Find all the DomainName nodes ranked in top 50000 that resolves to an IP that is part of a prefix originated by the AS with asn 2497.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:DomainName)--(:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(iij:AS {asn:2497})
+WHERE r.rank < 50000
+RETURN dn
+```
+
+Example 80
+Prompt:
+Retrieve the top 50000 domain names associated with the IP addresses announce by AS2497.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:DomainName)--(:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(iij:AS {asn:2497})
+WHERE r.rank < 50000
+RETURN dn
+```
+
+Example 81
+Prompt:
+Find all the Facility nodes located in Country with country_code "CN" or "HK" and count the number of ASes located in these facilities. Return the facility name and the number of ASes.
+
+Cypher query:
+```
+MATCH (c:Country)--(f:Facility)--(a:AS)
+WHERE c.country_code = 'CN' OR c.country_code = 'HK'
+RETURN f.name, count(DISTINCT a) AS nb_as ORDER BY nb_as DESC
+```
+
+Example 82
+Prompt:
+Count the number of ASes for each facility in China and Hong Kong.
+
+Cypher query:
+```
+MATCH (c:Country)--(f:Facility)--(a:AS)
+WHERE c.country_code = 'CN' OR c.country_code = 'HK'
+RETURN f.name, count(DISTINCT a) AS nb_as ORDER BY nb_as DESC
+```
+
+Example 83
+Prompt:
+Find ASes for which the Country given by NRO has country_code "CN" and return all the Facility nodes where these ASes are located in.
+
+Cypher query:
+```
+MATCH (net_country:Country)-[:COUNTRY {reference_org:'NRO'}]-(net:AS)-[:LOCATED_IN]-(fac:Facility)
+WHERE net_country.country_code = 'CN'
+RETURN fac
+```
+
+Example 84
+Prompt:
+Find all the facilities where Chinese Ases are.
+
+Cypher query:
+```
+MATCH (net_country:Country)-[:COUNTRY {reference_org:'NRO'}]-(net:AS)-[:LOCATED_IN]-(fac:Facility)
+WHERE net_country.country_code = 'CN'
+RETURN fac
+```
+
+Example 85
+Prompt:
+Find all the AS nodes that are located in Facility nodes linked to Country nodes with country_code "CN" or "HK".
+
+Cypher query:
+```
+MATCH (net:AS)-[:LOCATED_IN]-(fac:Facility)--(fac_country:Country)
+WHERE fac_country.country_code = 'HK' OR fac_country.country_code = 'CN'
+RETURN net
+```
+
+Example 86
+Prompt:
+Retrieve all the ASes that are located in facilities in China or Hong Kong.
+
+Cypher query:
+```
+MATCH (net:AS)-[:LOCATED_IN]-(fac:Facility)--(fac_country:Country)
+WHERE fac_country.country_code = 'HK' OR fac_country.country_code = 'CN'
+RETURN net
+```
+
+Example 87
+Prompt:
+Find the country_code for the Prefix nodes that are originated by AS nodes located in Country with country_code "CN".
+
+Cypher query:
+```
+MATCH (net_country:Country)-[:COUNTRY]-(net:AS)-[:ORIGINATE]-(pfx:Prefix)-[:COUNTRY]-(pfx_country:Country)
+WHERE net_country.country_code = 'CN'
+RETURN pfx_country.country_code
+```
+
+Example 88
+Prompt:
+Get the country code of prefixes announced by Chinese ASes.
+
+Cypher query:
+```
+MATCH (net_country:Country)-[:COUNTRY]-(net:AS)-[:ORIGINATE]-(pfx:Prefix)-[:COUNTRY]-(pfx_country:Country)
+WHERE net_country.country_code = 'CN'
+RETURN pfx_country.country_code
+```
+
+Example 89
+Prompt:
+Find the country_code of Country nodes related to the Prefix nodes that originated from AS nodes located in Country with country_code "HK".
+
+Cypher query:
+```
+MATCH (net_country:Country)-[:COUNTRY]-(net:AS)-[:ORIGINATE]-(pfx:Prefix)-[:COUNTRY]-(pfx_country:Country)
+WHERE net_country.country_code = 'HK'
+RETURN pfx_country.country_code
+```
+
+Example 90
+Prompt:
+Get the country code of prefixes announced by Ases of Hong Kong.
+
+Cypher query:
+```
+MATCH (net_country:Country)-[:COUNTRY]-(net:AS)-[:ORIGINATE]-(pfx:Prefix)-[:COUNTRY]-(pfx_country:Country)
+WHERE net_country.country_code = 'HK'
+RETURN pfx_country.country_code
+```
+
+Example 91
+Prompt:
+Find the asn of the AS with the largest number of Prefix nodes located in Country with country_code "CN" or "HK".
+
+Cypher query:
+```
+MATCH (pfx_country:Country)-[:COUNTRY]-(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE pfx_country.country_code = 'HK' OR pfx_country.country_code = 'CN'
+WITH net, COUNT(distinct pfx) as nb_pfx
+RETURN net.asn ORDER BY nb_pfx DESC LIMIT 1
+```
+
+Example 92
+Prompt:
+Get the As with the largest number of prefixes in China or Hong Kong.
+
+Cypher query:
+```
+MATCH (pfx_country:Country)-[:COUNTRY]-(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE pfx_country.country_code = 'HK' OR pfx_country.country_code = 'CN'
+WITH net, COUNT(distinct pfx) as nb_pfx
+RETURN net.asn ORDER BY nb_pfx DESC LIMIT 1
+```
+
+Example 93
+Prompt:
+Find all the corresponding IP nodes, Prefix nodes and AS nodes for all the HostName nodes which name ends with ".cn" and that are ranked below 10000.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.cn' AND r.rank<10000
+RETURN ip, pfx, net
+```
+
+Example 94
+Prompt:
+Get the IP, prefix, and ASes for the hostname ending with .cn and ranked below 10000.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.cn' AND r.rank<10000
+RETURN ip, pfx, net
+```
+
+Example 95
+Prompt:
+Find the AS nodes for which prefixes have IP addresses that resolves to HostName nodes with name ending with ".cn" and that have a rank below 1000000. Return the asn of the AS and the total number of distinct HostName nodes.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.cn' AND r.rank<100000
+RETURN net.asn,  count(DISTINCT dn) AS nb_domain_name
+```
+
+Example 96
+Prompt:
+Find the ASN and number of hostname for hostnames ending with .cn and ranked in the top 100k.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.cn' AND r.rank<100000
+RETURN net.asn,  count(DISTINCT dn) AS nb_domain_name
+```
+
+Example 97
+Prompt:
+Find the name of Name nodes directly connected to the node corresponding to AS node with asn 2497.
+
+Cypher query:
+```
+MATCH (a:AS {asn:2497})--(n:Name) RETURN n.name
+```
+
+Example 98
+Prompt:
+Find all the names of AS2497.
+
+Cypher query:
+```
+MATCH (a:AS {asn:2497})--(n:Name) RETURN n.name
+```
+
+Example 99
+Prompt:
+Find nodes of any type that are connected to the node corresponding to Prefix "8.8.8.0/24".
+
+Cypher query:
+```
+MATCH (gdns:Prefix {prefix:'8.8.8.0/24'})--(neighbor)
+RETURN neighbor
+```
+
+Example 100
+Prompt:
+Get everything related to prefix "8.8.8.0/24".
+
+Cypher query:
+```
+MATCH (gdns:Prefix {prefix:'8.8.8.0/24'})--(neighbor)
+RETURN neighbor
+```
+
+Example 101
+Prompt:
+Get the Country node directly connected to AS with asn 2497 by a relationship with reference_name "nro.delegated_stats".
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[{reference_name:'nro.delegated_stats'}]-(cc:Country)
+RETURN cc
+```
+
+Example 102
+Prompt:
+Find the country of AS2497 in the NRO's delegated stats
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[{reference_name:'nro.delegated_stats'}]-(cc:Country)
+RETURN cc
+```
+
+Example 103
+Prompt:
+Find IXP nodes related to the AS node with asn 2497, and then the Country node corresponding to each IXP node.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[:MEMBER_OF]-(ix:IXP)--(cc:Country)
+RETURN ix, cc
+```
+
+Example 104
+Prompt:
+Get the IXPs where AS2497 is present and corresponding countries.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[:MEMBER_OF]-(ix:IXP)--(cc:Country)
+RETURN ix, cc
+```
+
+Example 105
+Prompt:
+Select the HostName nodes in top 50k rankings that resolves to an IP node that belong to a prefix originated by AS with asn 15169.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:HostName)--(ip:IP)-[:PART_OF]-(pfx:Prefix)-[:ORIGINATE]-(google:AS {asn:15169})
+WHERE r.rank < 50000
+RETURN dn
+```
+
+Example 106
+Prompt:
+Get the hostnames hosted by Google that are in the top 50k.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:HostName)--(ip:IP)-[:PART_OF]-(pfx:Prefix)-[:ORIGINATE]-(google:AS {asn:15169})
+WHERE r.rank < 50000
+RETURN dn
+```
+
+Example 107
+Prompt:
+From the top 10k HostName nodes select HostName nodes that ends with ".jp" and return the corresponding IP nodes, Prefix nodes, and AS nodes.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.jp' AND r.rank<10000
+RETURN ip, pfx, net
+```
+
+Example 108
+Prompt:
+Give the IP, prefix, and AS nodes corresponding to the top 10k hostnames in Japan.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.jp' AND r.rank<10000
+RETURN ip, pfx, net
+```
+
+Example 109
+Prompt:
+Select from Ranking with name  "IHR country ranking: Total AS (IR)" the top 20 Ases, return the Ases and their PEER_WITH relationships.
+
+Cypher query:
+```
+MATCH (a:AS)-[ra:RANK]->(:Ranking {name: 'IHR country ranking: Total AS (IR)'})<-[rb:RANK]-(b:AS)-[p:PEERS_WITH]-(a)
+WHERE ra.rank < 20 AND rb.rank < 20 AND p.rel = 0
+RETURN a, p, b
+```
+
+Example 110
+Prompt:
+Retrieve the AS topology for IHR's top 20 ASes in Iran.
+
+Cypher query:
+```
+MATCH (a:AS)-[ra:RANK]->(:Ranking {name: 'IHR country ranking: Total AS (IR)'})<-[rb:RANK]-(b:AS)-[p:PEERS_WITH]-(a)
+WHERE ra.rank < 20 AND rb.rank < 20 AND p.rel = 0
+RETURN a, p, b
+```
+
+Example 111
+Prompt:
+Select the  AS nodes that AS node with asn 2501 depends on and return the shortest path using PEERS_WITH relationships to these AS2501 to these AS nodes.
+
+Cypher query:
+```
+MATCH (a:AS {asn:2501})-[h:DEPENDS_ON {af:4}]->(d:AS)
+WITH a, COLLECT(DISTINCT d) AS dependencies
+UNWIND dependencies as d
+MATCH p = allShortestPaths((a)-[:PEERS_WITH*]-(d))
+WHERE a.asn <> d.asn AND all(r IN relationships(p) WHERE r.af = 4) AND all(n IN nodes(p) WHERE n IN dependencies)
+RETURN p
+```
+
+Example 112
+Prompt:
+Retrieve the peerings between AS2501 and its dependencies.
+
+Cypher query:
+```
+MATCH (a:AS {asn:2501})-[h:DEPENDS_ON {af:4}]->(d:AS)
+WITH a, COLLECT(DISTINCT d) AS dependencies
+UNWIND dependencies as d
+MATCH p = allShortestPaths((a)-[:PEERS_WITH*]-(d))
+WHERE a.asn <> d.asn AND all(r IN relationships(p) WHERE r.af = 4) AND all(n IN nodes(p) WHERE n IN dependencies)
+RETURN p
+```
+
+Example 113
+Prompt:
+Find the Country of IXPs where AS node with asn 2497 is member of. Return the country and ixp nodes.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[:MEMBER_OF]-(ix:IXP)--(cc:Country) RETURN ix, cc
+```
+
+Example 114
+Prompt:
+Find the IXPs and corresponding countries where AS2497 is member of.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[:MEMBER_OF]-(ix:IXP)--(cc:Country) RETURN ix, cc
+```
+
+Example 115
+Prompt:
+Find the Country of the Facility where AS node with asn 2497 is located. Return both the Facility and Country nodes.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})--(ix:Facility)--(cc:Country) RETURN ix, cc
+```
+
+Example 116
+Prompt:
+Find the co-location facilities and corresponding countries where AS2497 is located.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})--(ix:Facility)--(cc:Country) RETURN ix, cc
+```
+
+Example 117
+Prompt:
+Find the Country of the Prefixes originated by AS node with asn 2497.  Return the country and prefixes nodes.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[:ORIGINATE]-(pfx:Prefix)--(cc:Country) RETURN pfx, cc
+```
+
+Example 118
+Prompt:
+Get the geolocation for each pefix announced by AS2497.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})-[:ORIGINATE]-(pfx:Prefix)--(cc:Country) RETURN pfx, cc
+```
+
+Example 119
+Prompt:
+Find the Prefix nodes that originate from ASes that depends on AS node with asn 2497 and the corresponding Country nodes.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})<-[:DEPENDS_ON]-(customer:AS)-[:ORIGINATE]-(pfx:Prefix)--(cc:Country) RETURN pfx, cc
+```
+
+Example 120
+Prompt:
+Give me the geolocation for each pefixes announced by AS2497's dependencies.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})<-[:DEPENDS_ON]-(customer:AS)-[:ORIGINATE]-(pfx:Prefix)--(cc:Country) RETURN pfx, cc
+```
+
+Example 121
+Prompt:
+Find the Country nodes of the Prefix nodes originated by the AS that depends on the AS node with asn 2497. Return the country_code value of these Country nodes.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})<-[dep:DEPENDS_ON]-(customer:AS)-[:ORIGINATE]-(pfx:Prefix)--(cc:Country)
+RETURN cc.country_code, count(DISTINCT customer) AS nb_dep ORDER BY nb_dep DESC
+```
+
+Example 122
+Prompt:
+Return the country code corresponding to prefixes announced by Ases that depends on AS2497.
+
+Cypher query:
+```
+MATCH (iij:AS {asn:2497})<-[dep:DEPENDS_ON]-(customer:AS)-[:ORIGINATE]-(pfx:Prefix)--(cc:Country)
+RETURN cc.country_code, count(DISTINCT customer) AS nb_dep ORDER BY nb_dep DESC
+```
+
+Example 123
+Prompt:
+Find the DomainName nodes that are ranked in the top 10k and have Prefix nodes originating from the AS node with asn 2497. Return the DomainName nodes, the Prefix nodes and the IP nodes.
+
+Cypher query:
+```
+MATCH (n:AS {asn:2497})-[:ORIGINATE]-(p:Prefix)--(i:IP)-[:RESOLVES_TO]-(:HostName)--(d:DomainName)-[r:RANK]-(:Ranking) WHERE r.rank<10000 RETURN n,p,i,d
+```
+
+Example 124
+Prompt:
+Find the domain name, IP address, and prefix corresponding to  the top 10k domain names hosted by AS2497.
+
+Cypher query:
+```
+MATCH (n:AS {asn:2497})-[:ORIGINATE]-(p:Prefix)--(i:IP)-[:RESOLVES_TO]-(:HostName)--(d:DomainName)-[r:RANK]-(:Ranking) WHERE r.rank<10000 RETURN n,p,i,d
+```
+
+Example 125
+Prompt:
+Find the DomainName nodes that are ranked in the top 10k that resolves to IP addresses that are part of Prefix nodes originated by or depending on the AS node with asn 2497.  Return the DomainName nodes, the Prefix nodes and the IP nodes.
+
+Cypher query:
+```
+MATCH (n:AS {asn:2497})--(p:Prefix)--(i:IP)--(:HostName)--(d:DomainName)-[r:RANK]-(:Ranking) WHERE r.rank<10000 RETURN n,p,i,d
+```
+
+Example 126
+Prompt:
+Find the domain name, IP address, and prefix corresponding to  the top 10k domain names related to AS2497.
+
+Cypher query:
+```
+MATCH (n:AS {asn:2497})--(p:Prefix)--(i:IP)--(:HostName)--(d:DomainName)-[r:RANK]-(:Ranking) WHERE r.rank<10000 RETURN n,p,i,d
+```
+
+Example 127
+Prompt:
+Find AS nodes that peer with both the AS node with asn 2497 and another transit AS. Both PEERS_WITH relationship should have the property rel=1. Retrun the other transit node, its name given by the RIPE NCC, and the number of Ases in common with AS2497.
+
+Cypher query:
+```
+MATCH (comp:AS)-[:PEERS_WITH {rel:1}]->(customer:AS)<-[:PEERS_WITH {rel:1}]-(iij:AS {asn:2497})
+WITH comp, customer OPTIONAL MATCH (comp)-[:NAME {reference_org:'RIPE NCC'}]-(comp_name:Name)
+RETURN comp, comp_name, count(DISTINCT customer) AS nb_customer ORDER BY nb_customer DESC
+```
+
+Example 128
+Prompt:
+Find the main competitors of AS2497.
+
+Cypher query:
+```
+MATCH (comp:AS)-[:PEERS_WITH {rel:1}]->(customer:AS)<-[:PEERS_WITH {rel:1}]-(iij:AS {asn:2497})
+WITH comp, customer OPTIONAL MATCH (comp)-[:NAME {reference_org:'RIPE NCC'}]-(comp_name:Name)
+RETURN comp, comp_name, count(DISTINCT customer) AS nb_customer ORDER BY nb_customer DESC
+```
+
+Example 129
+Prompt:
+Find DomainName nodes that have a rank value below 10k and a name ending with ".jp", then the corresponding HostNames, IP address, Prefix, and originating AS. Return the distinct DomainName’s name and correspoding AS’s asn.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:DomainName)--(:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.jp' AND r.rank<10000
+RETURN DISTINCT dn.name, net.asn
+```
+
+Example 130
+Prompt:
+Retrieve the top 10k Japanese domain names and the corresponding ASN of the AS hosting these domains.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:DomainName)--(:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.jp' AND r.rank<10000
+RETURN DISTINCT dn.name, net.asn
+```
+
+Example 131
+Prompt:
+Find DomainName with the name property that ends with ‘.jp’ and that are ranked in the top 100k. For these domain names find the corresponding hostnames, IP addresses, prefixes and originating Ases, and the name of Ases given by the ‘RIPE NCC’. Return the asn, AS name, and total number of distinct domain names.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:DomainName)--(:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.jp' AND r.rank<100000
+WITH net, dn  OPTIONAL MATCH (net:AS)-[:NAME {reference_org:'RIPE NCC'}]-(net_name:Name)
+RETURN net.asn, net_name.name, count(DISTINCT dn) AS nb_domain_name ORDER BY nb_domain_name DESC
+```
+
+Example 132
+Prompt:
+Find Ases hosting ‘.jp’ domain names that are in the top 100k. Return the ASN, name of the AS, and the unique number of corresponding domain names.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(dn:DomainName)--(:HostName)--(ip:IP)--(pfx:Prefix)-[:ORIGINATE]-(net:AS)
+WHERE dn.name ENDS WITH '.jp' AND r.rank<100000
+WITH net, dn  OPTIONAL MATCH (net:AS)-[:NAME {reference_org:'RIPE NCC'}]-(net_name:Name)
+RETURN net.asn, net_name.name, count(DISTINCT dn) AS nb_domain_name ORDER BY nb_domain_name DESC
+```
+
+Example 133
+Prompt:
+Find all nodes that are connected to a Name node with a name containing the word  "crimea".
+
+Cypher query:
+```
+MATCH (x)--(n:Name) WHERE toLower(n.name) CONTAINS 'crimea' RETURN x
+```
+
+Example 134
+Prompt:
+Find all nodes that have the word "crimea" in their name.
+
+Cypher query:
+```
+MATCH (x)--(n:Name) WHERE toLower(n.name) CONTAINS 'crimea' RETURN x
+```
+
+Example 135
+Prompt:
+Find the DomainName nodes that are ranked in the top 1k and are connected to Hostnames which are resolving to IP addresses that are part of Prefixed originating from the AS node with asn 12389. Return the distinct DomainName’s name.
+
+Cypher query:
+```
+MATCH (n:AS {asn:12389})-[:ORIGINATE]-(p:Prefix)--(i:IP)--(:HostName)--(d:DomainName)-[r:RANK]-(:Ranking) WHERE r.rank<1000 RETURN DISTINCT d.name
+```
+
+Example 136
+Prompt:
+Get the name of top 1k domain names that are hosted by AS12389.
+
+Cypher query:
+```
+MATCH (n:AS {asn:12389})-[:ORIGINATE]-(p:Prefix)--(i:IP)--(:HostName)--(d:DomainName)-[r:RANK]-(:Ranking) WHERE r.rank<1000 RETURN DISTINCT d.name
+```
+
+Example 137
+Prompt:
+Find the DomainName nodes that are ranked in the top 1k and have Prefix nodes depending on the AS node with asn 12389. Return the name of these DomainNames.
+
+Cypher query:
+```
+MATCH (n:AS {asn:12389})-[:DEPENDS_ON]-(p:Prefix)--(i:IP)--(:HostName)--(d:DomainName)-[r:RANK]-(:Ranking) WHERE r.rank<1000 RETURN DISTINCT d.name
+```
+
+Example 138
+Prompt:
+Get the name of domain names in the top 1k that depends on AS12389.
+
+Cypher query:
+```
+MATCH (n:AS {asn:12389})-[:DEPENDS_ON]-(p:Prefix)--(i:IP)--(:HostName)--(d:DomainName)-[r:RANK]-(:Ranking) WHERE r.rank<1000 RETURN DISTINCT d.name
+```
+
+Example 139
+Prompt:
+Find DomainName nodes ranked in the top 10k that resolves to IP addresses in prefixes originated by Ases that have the same OpaqueID as the AS node with asn 12389. Return the distinct DomainName’s name and the corresponding AS’s asn.
+
+Cypher query:
+```
+MATCH (oid:OpaqueID)--(net:AS)--(pfx:Prefix)--(ip:IP)--(:HostName)--(dname:DomainName)-[r]-(:Ranking), (net)-[{reference_org:'RIPE NCC'}]-(asname:Name) WHERE (oid:OpaqueID)--(:AS {asn:12389}) AND r.rank < 10000 AND net.asn<>12389 RETURN distinct dname.name, net.asn
+```
+
+Example 140
+Prompt:
+Get the domain names in the top1k that are hosted by Ases that have the same OpaqueID than AS12389. Retrun disctinct DomainName’s name and the corresponding AS’s asn.
+
+Cypher query:
+```
+MATCH (oid:OpaqueID)--(net:AS)--(pfx:Prefix)--(ip:IP)--(:HostName)--(dname:DomainName)-[r]-(:Ranking), (net)-[{reference_org:'RIPE NCC'}]-(asname:Name) WHERE (oid:OpaqueID)--(:AS {asn:12389}) AND r.rank < 10000 AND net.asn<>12389 RETURN distinct dname.name, net.asn
+```
+
+Example 141
+Prompt:
+Find Ases that are connected to the same OpaqueID node than AS12389 and the prefixes originated by these Ases. Return the distinct Ases, their name given by the RIPE NCC, and the  Country’s country_code, 
+
+Cypher query:
+```
+MATCH (:AS {asn:12389})--(oid:OpaqueID)--(net:AS)-[:ORIGINATE]-(pfx:Prefix)--(cc:Country), (net)-[{reference_org:'RIPE NCC'}]-(asname:Name) WHERE net.asn<>12389 AND cc.country_code <> 'RU' RETURN distinct net.asn, asname.name, cc.country_code
+```
+
+Example 142
+Prompt:
+Find the prefixes originated by Ases that have the same OpaqueID as AS12389. Return the distinct Ases, their name given by the RIPE NCC, and the  prefix’s country code.
+
+Cypher query:
+```
+MATCH (:AS {asn:12389})--(oid:OpaqueID)--(net:AS)-[:ORIGINATE]-(pfx:Prefix)--(cc:Country), (net)-[{reference_org:'RIPE NCC'}]-(asname:Name) WHERE net.asn<>12389 AND cc.country_code <> 'RU' RETURN distinct net.asn, asname.name, cc.country_code
+```
+
+Example 143
+Prompt:
+Find all the IXPs where the AS with asn 12389 is member of and return the distinct IXPs PeeringDB id.
+
+Cypher query:
+```
+MATCH (n:AS  {asn:12389})--(ix:IXP)--(pid:PeeringdbIXID) RETURN pid.id
+```
+
+Example 144
+Prompt:
+Find all unique IXP peeringdb ids where AS12389 is member of.
+
+Cypher query:
+```
+MATCH (n:AS  {asn:12389})--(ix:IXP)--(pid:PeeringdbIXID) RETURN pid.id
+```
+
+Example 145
+Prompt:
+Find all the Country nodes corresponding to the IXP nodes where AS node with asn 12389 is member of. Return only distinct country_code.
+
+Cypher query:
+```
+MATCH (n:AS {asn:12389})--(ix:IXP)--(cc:Country) RETURN distinct cc.country_code
+```
+
+Example 146
+Prompt:
+Get the country codes of the IXPs' where AS12389 is member of.
+
+Cypher query:
+```
+MATCH (n:AS {asn:12389})--(ix:IXP)--(cc:Country) RETURN distinct cc.country_code
+```
+
+Example 147
+Prompt:
+Find the Country’s country_code of Ases hosting all DomainName with a name that ends with ".ru" and that are ranked in the top 10k. Return the country_code and the corresponding number of distinct DomainName’s name.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(domain:DomainName)--(:HostName)--(:IP)--(:Prefix)-[:ORIGINATE]-(:AS)-[:COUNTRY]-(cc:Country) WHERE r.rank<10000 AND domain.name ENDS WITH '.ru' RETURN cc.country_code, count(DISTINCT domain.name) AS dm_count ORDER BY dm_count DESC
+```
+
+Example 148
+Prompt:
+Get the country codes of ASes hosting .ru domain names. Return the country code and corresponding number of unique domain names.
+
+Cypher query:
+```
+MATCH (:Ranking)-[r:RANK]-(domain:DomainName)--(:HostName)--(:IP)--(:Prefix)-[:ORIGINATE]-(:AS)-[:COUNTRY]-(cc:Country) WHERE r.rank<10000 AND domain.name ENDS WITH '.ru' RETURN cc.country_code, count(DISTINCT domain.name) AS dm_count ORDER BY dm_count DESC
+```
+
+Example 149
+Prompt:
+Find the total number of  AS in Country with country_code "JP".
+
+Cypher query:
+```
+MATCH (a:AS)-[:COUNTRY]-(:Country {country_code:'JP'}) 
+RETURN COUNT(DISTINCT a)
+```
+
+Example 150
+Prompt:
+Get the number of ASes in Japan.
+
+Cypher query:
+```
+MATCH (a:AS)-[:COUNTRY]-(:Country {country_code:'JP'}) 
+RETURN COUNT(DISTINCT a)
+```
+
+Example 151
+Prompt:
+Find the AS nodes associated with the country code "JP" through the COUNTRY relationship. Match these AS nodes to Ranking nodes with a rank below 10 according to the "ihr.country_dependency" reference_name and for the Ranking in Japan. If available find the names given by BGP.Tools for these ASes. Return the ASNs, their corresponding AS names, and the list of the distinct ranking names, ordered by asn.
+
+Cypher query:
+```
+MATCH (a:AS)-[:COUNTRY]-(:Country {country_code:'JP'})
+MATCH (a:AS)-[ra:RANK {reference_name:"ihr.country_dependency"}]->(r:Ranking)--(:Country {country_code:'JP'})
+WHERE ra.rank < 10
+OPTIONAL MATCH (a)-[:NAME {reference_org:"BGP.Tools"}]-(n:Name)
+RETURN DISTINCT a.asn as ASN, n.name AS AS_Name, COLLECT(distinct r.name) as Rankings 
+ORDER BY a.asn
+```
+
+Example 152
+Prompt:
+Get the japanese ASes that appear in the top 10 of IHR’s rankings in Japan. Return the ASN, AS name according to BGP.Tools, and the list of unique ranking names, ordered by ASN.
+
+Cypher query:
+```
+MATCH (a:AS)-[:COUNTRY]-(:Country {country_code:'JP'})
+MATCH (a:AS)-[ra:RANK {reference_name:"ihr.country_dependency"}]->(r:Ranking)--(:Country {country_code:'JP'})
+WHERE ra.rank < 10
+OPTIONAL MATCH (a)-[:NAME {reference_org:"BGP.Tools"}]-(n:Name)
+RETURN DISTINCT a.asn as ASN, n.name AS AS_Name, COLLECT(distinct r.name) as Rankings 
+ORDER BY a.asn
+```
+
+Example 153
+Prompt:
+Find the AS nodes associated with the country code "JP" through the COUNTRY relationship. Match these AS nodes to Ranking nodes with a rank below 10 according to the "ihr.country_dependency" reference_name and for the Ranking in Japan. Optionally, from these AS nodes find direct dependencies which are other AS nodes that are connected with a PEERS_WITH relationship (with "rel" equal to 1) and a DEPENDS_ON relationship (with "hege" greater than 0.03). Ignore self-dependencies. Return the AS nodes, the DEPENDS_ON relationships, and the direct dependency AS nodes.
+
+Cypher query:
+```
+MATCH (a:AS)-[:COUNTRY]-(:Country {country_code:'JP'})
+MATCH (a:AS)-[ra:RANK {reference_name:"ihr.country_dependency"}]->(:Ranking)
+WHERE ra.rank < 10
+OPTIONAL MATCH (a)-[p:PEERS_WITH]-(b), (a)-[d:DEPENDS_ON]->(b)
+WHERE p.rel = 1 AND d.hege > 0.03 AND a<>b
+RETURN a, d, b
+```
+
+Example 154
+Prompt:
+Get the japanese ASes that appear in the top 10 of IHR’s rankings in Japan. Then find the direct dependencies of these nodes. Ignore self-dependencies. Return the AS, peering relationship, and depending AS.
+
+Cypher query:
+```
+MATCH (a:AS)-[:COUNTRY]-(:Country {country_code:'JP'})
+MATCH (a:AS)-[ra:RANK {reference_name:"ihr.country_dependency"}]->(:Ranking)
+WHERE ra.rank < 10
+OPTIONAL MATCH (a)-[p:PEERS_WITH]-(b), (a)-[d:DEPENDS_ON]->(b)
+WHERE p.rel = 1 AND d.hege > 0.03 AND a<>b
+RETURN a, d, b
+```
+
+Example 155
+Prompt:
+Find the AS nodes associated with the country code "JP" through the COUNTRY relationship. Match these AS nodes to Ranking nodes with a rank below 10 according to the "ihr.country_dependency" reference_name and for the Ranking in Japan. Find the japanese IXPs where these ASes are member of.  Return the distinct ASNs and name of the IXPs.
+
+Cypher query:
+```
+MATCH (a)-[:COUNTRY {reference_org:'RIPE NCC'}]-(:Country {country_code:'JP'})
+MATCH (a:AS)-[ra:RANK {reference_name:"ihr.country_dependency"}]->(:Ranking)
+WHERE ra.rank <= 10
+OPTIONAL MATCH (a)-[m:MEMBER_OF]-(ix:IXP)-[:COUNTRY]-(:Country {country_code:'JP'})
+RETURN DISTINCT a.asn, ix.name
+```
+
+Example 156
+Prompt:
+Get the japanese ASes that appear in the top 10 of IHR’s rankings in Japan. Then find the IXPs where these Ases are member of. Return the distinct ASNs and IXP name.
+
+Cypher query:
+```
+MATCH (a)-[:COUNTRY {reference_org:'RIPE NCC'}]-(:Country {country_code:'JP'})
+MATCH (a:AS)-[ra:RANK {reference_name:"ihr.country_dependency"}]->(:Ranking)
+WHERE ra.rank <= 10
+OPTIONAL MATCH (a)-[m:MEMBER_OF]-(ix:IXP)-[:COUNTRY]-(:Country {country_code:'JP'})
+RETURN DISTINCT a.asn, ix.name
+```
+
+Example 157
+Prompt:
+Find the DomainName nodes that are ranked in the "Tranco top 1M" ranking. These DomainName nodes should have over 30 percent of their queries from the country with the country code "JP". Return the DomainName name, the rank, and the percentage of queries from Japan, ordered by rank.
+
+Cypher query:
+```
+MATCH (:Ranking {name: 'Tranco top 1M'})-[ra:RANK]-(dn:DomainName)-[q:QUERIED_FROM]-(c:Country)
+WHERE q.value > 30 AND c.country_code = 'JP'
+RETURN dn.name as domain_name, ra.rank as rank, q.value as per_query_JP
+ORDER BY rank
+```
+
+Example 158
+Prompt:
+Find domain names for which at least 30 percent of the queries are made in japan. Return the domain name, domain name rank in Tranco, and the percentage of queries made in japan.
+
+Cypher query:
+```
+MATCH (:Ranking {name: 'Tranco top 1M'})-[ra:RANK]-(dn:DomainName)-[q:QUERIED_FROM]-(c:Country)
+WHERE q.value > 30 AND c.country_code = 'JP'
+RETURN dn.name as domain_name, ra.rank as rank, q.value as per_query_JP
+ORDER BY rank
+```
+
+Example 159
+Prompt:
+For the DomainName node with the name "yahoo.co.jp" find the corresponding  Ips, Prefixes, and originating AS. Return the IP’s ip, Prefix’s prefix, and AS’s asn.
+
+Cypher query:
+```
+MATCH p = (dn:DomainName)--(:HostName)--(i:IP)-[:PART_OF]-(pfx:Prefix)-[:ORIGINATE]-(a:AS)
+WHERE dn.name = 'yahoo.co.jp'
+RETURN i.ip, pfx.prefix, a.asn
+```
+
+Example 160
+Prompt:
+Get the IP addresses, prefixes, and ASNs corresponding to yahoo.co.jp.
+
+Cypher query:
+```
+MATCH p = (dn:DomainName)--(:HostName)--(i:IP)-[:PART_OF]-(pfx:Prefix)-[:ORIGINATE]-(a:AS)
+WHERE dn.name = 'yahoo.co.jp'
+RETURN i.ip, pfx.prefix, a.asn
+```
+
+Example 161
+Prompt:
+Find the DomainName nodes that are ranked in the "Tranco top 1M" with a rank below 10,000. These DomainName nodes should have at least 30 percent of their queries from the country with the country code "JP". Match these DomainName nodes to HostName nodes that resolve to IP nodes, which are part of Prefix nodes, originating from AS nodes. Return the HostName, IP, Prefix, and AS nodes, along with the RESOLVES_TO, PART_OF, and ORIGINATE relationships.
+
+Cypher query:
+```
+MATCH (:Ranking {name: 'Tranco top 1M'})-[ra:RANK]-(dn:DomainName)-[q:QUERIED_FROM]-(c:Country)
+WHERE q.value > 30 AND c.country_code = 'JP' AND ra.rank < 10000
+MATCH (dn:DomainName)--(hn:HostName)-[r:RESOLVES_TO]-(ip:IP)-[p:PART_OF]-(pfx:Prefix)-[o:ORIGINATE]-(net:AS) 
+RETURN hn, ip, pfx, net, r, p, o
+```
+
+Example 162
+Prompt:
+Find domain names for which at least 30 percent of the queries are made in japan. Returns the corresponding hostname, ip, prefix, and originating AS with all their relationships.
+
+Cypher query:
+```
+MATCH (:Ranking {name: 'Tranco top 1M'})-[ra:RANK]-(dn:DomainName)-[q:QUERIED_FROM]-(c:Country)
+WHERE q.value > 30 AND c.country_code = 'JP' AND ra.rank < 10000
+MATCH (dn:DomainName)--(hn:HostName)-[r:RESOLVES_TO]-(ip:IP)-[p:PART_OF]-(pfx:Prefix)-[o:ORIGINATE]-(net:AS) 
+RETURN hn, ip, pfx, net, r, p, o
+```
+
+Example 163
+Prompt:
+Find the DomainName nodes that are ranked in the "Tranco top 1M" with a rank below 10,000. These DomainName nodes should have at least 30 percent of their queries from the country with the country code "JP". Match these DomainName nodes to AuthoritativeNameServer nodes through the MANAGED_BY relationship, which resolve to IP nodes. These IP nodes should be part of Prefix nodes that originate from AS nodes. Return the domain names, the number of distinct AS nodes, and the list of the distinct ASNs, ordered by the number of AS nodes in descending order.
+
+Cypher query:
+```
+MATCH (:Ranking {name: 'Tranco top 1M'})-[ra:RANK]-(dn:DomainName)-[q:QUERIED_FROM]-(c:Country)
+WHERE q.value > 30 AND c.country_code = 'JP' AND ra.rank < 10000
+MATCH (dn:DomainName)-[:MANAGED_BY]-(:AuthoritativeNameServer)-[:RESOLVES_TO]-(:IP)-[:PART_OF]-(:Prefix)-[:ORIGINATE]-(a:AS) 
+RETURN dn.name, count(DISTINCT a) AS nb_asn, COLLECT(distinct a.asn) ORDER BY nb_asn DESC
+```
+
+Example 164
+Prompt:
+Find the authoritative name servers of domain names for which at least 30 percent of the queries are made in japan and that are in the top10k of Tranco. For each domain name return the number of Ases hosting authoritative nameservers and the list of unique ASNs.
+
+Cypher query:
+```
+MATCH (:Ranking {name: 'Tranco top 1M'})-[ra:RANK]-(dn:DomainName)-[q:QUERIED_FROM]-(c:Country)
+WHERE q.value > 30 AND c.country_code = 'JP' AND ra.rank < 10000
+MATCH (dn:DomainName)-[:MANAGED_BY]-(:AuthoritativeNameServer)-[:RESOLVES_TO]-(:IP)-[:PART_OF]-(:Prefix)-[:ORIGINATE]-(a:AS) 
+RETURN dn.name, count(DISTINCT a) AS nb_asn, COLLECT(distinct a.asn) ORDER BY nb_asn DESC
+```
+
+Example 165
+Prompt:
+Find the AuthoritativeNameServer nodes that manage the  DomainName node with the name "dmm.com". Also find the corresponding IP, Prefix, and originating AS for these AuthoritativeNameServer. Return the IP’s ip and AS’s asn.
+
+Cypher query:
+```
+MATCH p = (dn:DomainName)-[:MANAGED_BY]-(ans:AuthoritativeNameServer)-[:RESOLVES_TO]-(ip:IP)-[:PART_OF]-(:Prefix)-[:ORIGINATE]-(a:AS)
+WHERE dn.name = 'dmm.com'
+RETURN ip.ip, a.asn
+```
+
+Example 166
+Prompt:
+Get the IP address and originating ASN for the authoritative DNS name servers managing the domain name dmm.com.
+
+Cypher query:
+```
+MATCH p = (dn:DomainName)-[:MANAGED_BY]-(ans:AuthoritativeNameServer)-[:RESOLVES_TO]-(ip:IP)-[:PART_OF]-(:Prefix)-[:ORIGINATE]-(a:AS)
+WHERE dn.name = 'dmm.com'
+RETURN ip.ip, a.asn
+```
+
+Note: Do not include any explanations or apologies in your responses.
