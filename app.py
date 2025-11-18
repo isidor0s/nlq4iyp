@@ -216,7 +216,9 @@ REMEMBER: Never answer a question without first executing a Cypher query using t
                 "args": ["mcp-neo4j-cypher@0.3.0", "--transport", "stdio"],
                 "transport": "stdio",
                 "env": {
-                    "NEO4J_URI": "neo4j://localhost:7687",
+                    neo4j://iyp-bolt.ihr.live:7687
+                    "NEO4J_URI": "neo4j://iyp-bolt.ihr.live:7687"
+                    #"NEO4J_URI": "neo4j://localhost:7687",
                     "NEO4J_USERNAME": "neo4j",
                     "NEO4J_PASSWORD": "password",
                     "NEO4J_DATABASE": "Neo4j"
@@ -484,3 +486,4 @@ if user_query:
                 })
             else:
                 st.error("Failed to get response from agent")
+
