@@ -213,13 +213,15 @@ REMEMBER: Never answer a question without first executing a Cypher query using t
         client = MultiServerMCPClient({
             "neo4j": {
                 "command": "uvx",
-                "args": ["mcp-neo4j-cypher@0.3.0", "--transport", "stdio"],
-                "transport": "stdio",
-                "env": {
-                    "NEO4J_URI": "neo4j://iyp-bolt.ihr.live:7687",
-                    "NEO4J_USERNAME": "neo4j",
-                    "NEO4J_PASSWORD": "password",
-                    "NEO4J_DATABASE": "Neo4j"
+                "args": [
+                    "mcp-neo4j-cypher@0.5.2",
+                    "--transport", "stdio",
+                    "--db-url", "neo4j://localhost:7687",
+                    "--username", "neo4j",
+                    "--password", "password",
+                    "--database", "Neo4j"
+                ],
+                "transport": "stdio"
                 }
             }
         })
@@ -484,6 +486,7 @@ if user_query:
                 })
             else:
                 st.error("Failed to get response from agent")
+
 
 
 
