@@ -222,7 +222,6 @@ REMEMBER: Never answer a question without first executing a Cypher query using t
                     "--database", "Neo4j"
                 ],
                 "transport": "stdio"
-                }
             }
         })
         tools = await client.get_tools()
@@ -486,6 +485,7 @@ if user_query:
                 })
             else:
                 st.error("Failed to get response from agent")
+
 
 
 
