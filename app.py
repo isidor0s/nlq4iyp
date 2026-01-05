@@ -485,13 +485,3 @@ if user_query:
                 })
             else:
                 st.error("Failed to get response from agent")
-
-
-
-
-
-
-
-
-
-
