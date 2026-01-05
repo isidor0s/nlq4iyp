@@ -3,9 +3,10 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.prebuilt import create_react_agent
 from langchain_mcp_adapters.client import MultiServerMCPClient
 import asyncio
-import importlib
 import json
 import threading
+import socket
+import urllib.request
 
 
 # Page configuration
@@ -32,6 +33,77 @@ st.title(APP_TITLE)
 st.markdown(APP_TAGLINE)
 
 
+# Connection diagnostic functions
+def test_neo4j_connection(host="iyp-bolt.ihr.live", port=7687, timeout=10):
+    """Test if Neo4j server is reachable via socket"""
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(timeout)
+        result = sock.connect_ex((host, port))
+        sock.close()
+        return result == 0, None
+    except Exception as e:
+        return False, str(e)
+
+
+def get_server_ip(host="iyp-bolt.ihr.live"):
+    """Resolve server hostname to IP"""
+    try:
+        return socket.gethostbyname(host), None
+    except socket.gaierror as e:
+        return None, str(e)
+
+
+def get_outbound_ip():
+    """Get the outbound IP that servers see"""
+    try:
+        external_ip = urllib.request.urlopen('https://api.ipify.org', timeout=5).read().decode('utf8')
+        return external_ip, None
+    except Exception as e:
+        return None, str(e)
+
+
+# Show connection diagnostics in expander
+with st.expander("🔧 Connection Diagnostics", expanded=False):
+    if st.button("Test Neo4j Connection"):
+        with st.spinner("Testing connection to iyp-bolt.ihr.live:7687..."):
+            # Test DNS resolution
+            server_ip, dns_error = get_server_ip()
+            if server_ip:
+                st.info(f"📍 Server IP: {server_ip}")
+            else:
+                st.error(f"❌ DNS resolution failed: {dns_error}")
+            
+            # Test socket connection
+            can_connect, conn_error = test_neo4j_connection()
+            if can_connect:
+                st.success("✅ Socket connection successful - port 7687 is reachable")
+            else:
+                st.error(f"❌ Cannot connect to server: {conn_error}")
+            
+            # Show client IP
+            outbound_ip, ip_error = get_outbound_ip()
+            if outbound_ip:
+                st.info(f"📍 Your outbound IP: {outbound_ip}")
+            else:
+                st.warning(f"Could not determine outbound IP: {ip_error}")
+            
+            # Summary
+            st.markdown("---")
+            if can_connect:
+                st.success("✅ Network connectivity looks good. If queries still fail, it may be a protocol issue.")
+            else:
+                st.error("""
+                ❌ **Cannot reach Neo4j server**
+                
+                This is likely because the IYP server blocks connections from cloud IPs.
+                
+                **Solutions:**
+                1. Run this app locally: `streamlit run app.py`
+                2. Contact the IYP team to whitelist cloud IPs
+                """)
+
+
 st.markdown(
     """
     <style>
@@ -48,6 +120,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 # Function to extract response data
 def extract_response(response):
@@ -118,6 +191,7 @@ def extract_response(response):
         "num_results": len(cypher_results)
     }
 
+
 def init_session_state():
     defaults = {
         "chat_history": [],
@@ -184,6 +258,7 @@ def build_conversation_messages(system_prompt, user_query):
     messages.append({"role": "user", "content": user_query})
     return messages
 
+
 # Load system prompt and initialize agent
 @st.cache_resource
 def initialize_agent(api_key: str):
@@ -243,6 +318,7 @@ REMEMBER: Never answer a question without first executing a Cypher query using t
     
     return agent, system_prompt
 
+
 # Async function to query the agent
 async def query_agent(agent, messages):
     steps = []
@@ -295,7 +371,6 @@ async def query_agent(agent, messages):
             final_response = event
 
     except Exception as e:
-        # Log error instead of failing silently
         st.error(f"Error during agent execution: {e}")
         return None, steps
 
@@ -377,8 +452,6 @@ with st.spinner("Initializing agent..."):
         st.success("Agent initialized successfully!")
 
 render_user_guidance()
-
-
 
 
 # Chat interface
