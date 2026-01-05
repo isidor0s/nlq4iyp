@@ -219,7 +219,7 @@ REMEMBER: Never answer a question without first executing a Cypher query using t
                     "--db-url", "bolt://iyp-bolt.ihr.live:7687",
                     "--username", "neo4j",
                     "--password", "",
-                    "--database", "Neo4j"
+                    "--database", "neo4j"
                 ],
                 "transport": "stdio"
             }
@@ -485,6 +485,7 @@ if user_query:
                 })
             else:
                 st.error("Failed to get response from agent")
+
 
 
 
